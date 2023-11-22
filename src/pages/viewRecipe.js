@@ -4,6 +4,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import {API} from "../config.js"
 
 export const ViewRecipe = () => {
  
@@ -16,12 +17,12 @@ export const ViewRecipe = () => {
     // Fetch recipe details
     const fetchData = async () => {
     try {
-      const recipeResponse = await axios.get(`https://recipe-book-back-end.vercel.app/recipes/${recipeID}`);
+      const recipeResponse = await axios.get(`${API}/recipes/${recipeID}`);
       const recipeData = recipeResponse.data;
       setRecipe(recipeData);
 
       // Fetch display name of the recipe-created-user
-      const ownerNameresponse = await axios.get(`https://recipe-book-back-end.vercel.app/auth/${recipeData.recipeOwner}`);
+      const ownerNameresponse = await axios.get(`${API}/auth/${recipeData.recipeOwner}`);
       setRecipeOwnerDisplayName(ownerNameresponse.data);
     } catch (error) {
       console.error(error);

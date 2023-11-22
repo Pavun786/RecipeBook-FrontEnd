@@ -12,6 +12,7 @@ import { ViewRecipe } from "./pages/viewRecipe";
 import "./pages/styles/common.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UpdateRecipe, { EditRecipe } from "./pages/updateRecipe";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 
 
@@ -22,13 +23,32 @@ function App() {
     <Router>
       <Navbar></Navbar>
       <Routes>
-        <Route path="/home" element={<Home/>}/>
-        <Route path="/create-recipe" element={<CreateRecipe/>}/>
-        <Route path="/saved-recipes" element={<SavedRecipes/>}/>
-        <Route path = "/viewRecipe/:recipeID?" element={<ViewRecipe/>}/>
-        <Route path="/update-recipes/:recipeID" element={<EditRecipe/>}/>
-        <Route path="/auth" element={<Auth/>}/>
+        <Route path="/" element={<Auth/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/home" element={
+        <ProtectedRoute>
+        <Home/>
+        </ProtectedRoute>}/>
+        <Route path="/create-recipe" element={
+        <ProtectedRoute>
+        <CreateRecipe/>
+        </ProtectedRoute>}/>
+        <Route path="/saved-recipes" element={
+        <ProtectedRoute>
+        <SavedRecipes/>
+        </ProtectedRoute>
+        }/>
+        <Route path = "/viewRecipe/:recipeID?" element={
+        <ProtectedRoute>
+        <ViewRecipe/>
+        </ProtectedRoute>
+        }/>
+        <Route path="/update-recipes/:recipeID" element={
+        <ProtectedRoute>
+        <EditRecipe/>
+        </ProtectedRoute>
+        }/>
+       
       </Routes>
     </Router>
  

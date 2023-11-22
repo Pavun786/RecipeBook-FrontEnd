@@ -17,15 +17,13 @@ export const MenuData = [
         cName: "nav-links",
         icon: "fas fa-list"
     },
-    // {
-    //     title: "Additional Page",
-    //     url: "/additional-page",
-    //     cName: "nav-links",
-    //     icon: "fas fa-sign-in-alt"
-    // },
+    {
+        title: "user"
+       
+    },
     {
         title: "Login/Signup",
-        url: "/auth",
+        url: "/",
         cName: "nav-links-button",
     },
 ];

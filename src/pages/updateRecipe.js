@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "./styles/create-recipe.css";
 import { useCookies } from 'react-cookie';
+import {API} from "../config.js"
 
 
 export function EditRecipe(){
@@ -23,7 +24,7 @@ export function EditRecipe(){
         const fetchRecipes = async () => {
         //   try {
             const response = await axios.get(
-              `https://recipe-book-back-end.vercel.app/recipes/${recipeID}`, {
+              `${API}/recipes/${recipeID}`, {
                
               }
             );
@@ -103,7 +104,7 @@ export default function UpdateRecipe({savedRecipes,setSavedRecipes}) {
         event.preventDefault();
 
         // try {
-          let res = await axios.put(`https://recipe-book-back-end.vercel.app/recipes/${savedRecipes._id}`, recipe, {
+          let res = await axios.put(`${API}/recipes/${savedRecipes._id}`, recipe, {
                 headers: { authorization: cookies.access_token }
             })
             alert("Recipe Updated");
@@ -203,7 +204,7 @@ export default function UpdateRecipe({savedRecipes,setSavedRecipes}) {
             </div>
         </div>
         <div className="button">
-            <button type='submit'>Create Recipe</button>
+            <button type='submit'>Update Recipe</button>
         </div>
     </form>
     <div className='spacer'>Space to the footer </div>
