@@ -16,7 +16,7 @@ export const Signup = () => {
         event.preventDefault();
 
         try {
-            await axios.post(`${API}/auth/register`, {
+            await axios.post("https://recipe-book-back-end.vercel.app/auth/register", {
                 email,
                 password,
                 displayName

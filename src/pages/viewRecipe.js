@@ -17,12 +17,12 @@ export const ViewRecipe = () => {
     // Fetch recipe details
     const fetchData = async () => {
     try {
-      const recipeResponse = await axios.get(`${API}/recipes/${recipeID}`);
+      const recipeResponse = await axios.get(`https://recipe-book-back-end.vercel.app/recipes/${recipeID}`);
       const recipeData = recipeResponse.data;
       setRecipe(recipeData);
 
       // Fetch display name of the recipe-created-user
-      const ownerNameresponse = await axios.get(`${API}/auth/${recipeData.recipeOwner}`);
+      const ownerNameresponse = await axios.get(`https://recipe-book-back-end.vercel.app/auth/${recipeData.recipeOwner}`);
       setRecipeOwnerDisplayName(ownerNameresponse.data);
     } catch (error) {
       console.error(error);

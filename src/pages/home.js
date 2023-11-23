@@ -4,7 +4,7 @@ import { useGetUserID } from "../hooks/useGetUserID";
 import { useCookies } from "react-cookie";
 import "./styles/card.css";
 import { useNavigate } from "react-router-dom";
-import {API} from "../config.js"
+import {API} from "../config"
 
 export const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -16,19 +16,21 @@ export const Home = () => {
   useEffect(() => {
     // Fetches all the recipies
     const fetchReipes = async () => {
-      try {
-        const response = await axios.get(`${API}/recipes`);
+       try {
+        
+        const response = await axios.get("https://recipe-book-back-end.vercel.app/recipes");
+        
         setRecipes(response.data);
-      } catch (error) {
+       } catch (error) {
         console.error(error);
-      }
+       }
     };
 
     // Fetches the user saved recipe ID's
     const fetchSavedRecipies = async () => {
       try {
         const response = await axios.get(
-          `${API}/recipes/savedRecipes/ids/${userID}`,
+          `https://recipe-book-back-end.vercel.app/recipes/savedRecipes/ids/${userID}`,
           {headers: {authorization: cookies.access_token}}
         );
         setSavedRecipes(response.data.savedRecipes);
@@ -44,7 +46,7 @@ export const Home = () => {
 
   const saveRecipe = async (recipeID) => {
     try {
-      const response = await axios.put(`${API}/recipes`, {
+      const response = await axios.put("https://recipe-book-back-end.vercel.app/recipes", {
         userID,
         recipeID,
       }, {
@@ -64,7 +66,7 @@ export const Home = () => {
 
     console.log(recipeID)
     try {
-      const response = await axios.delete(`${API}/recipes/${recipeID}`, {
+      const response = await axios.delete(`https://recipe-book-back-end.vercel.app/recipes/${recipeID}`, {
         headers: {authorization : cookies.access_token}
       })
       
