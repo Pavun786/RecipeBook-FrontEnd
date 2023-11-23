@@ -21,6 +21,7 @@ function Navbar() {
             setCookies("access_token", "");
             window.localStorage.removeItem("userID");
             window.localStorage.removeItem("name");
+            window.localStorage.removeItem("token");
             lastObject.title = "Login/Signup"
         }
     }
